@@ -6,14 +6,20 @@
 
 /* settings you can play with */
 
-.ldt, .ldt label {
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.ldt, .ldt label.ldt-label {
 	padding: 4px;
 }
 
 .ldt, .ldt pre, .ldt textarea {
-	font-size: 16px !important;
+	font-size: 14px;
 	/* resize algorithm depends on a monospaced font */
-	font-family: monospace !important;
+	font-family: monospace;
 	color: black;
 }
 
@@ -21,7 +27,7 @@
 	/* fallback for browsers without rgba */
 	color: transparent !important;
 	/* make sure the alpha is low enough so it doesn't block the output layer */
-	color: rgba(0,0,0,.2) !important;
+	color: rgba(0,0,0,.3) !important;
 }
 
 /* settings you shouldn't play with unless you have a good reason */
@@ -33,6 +39,11 @@
 
 .ldt pre {
 	-moz-padding-start: 1px;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
 .ldt label {
@@ -42,9 +53,6 @@
 	width: 100%;
 	height: 100%;
 	display: inline;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
 	cursor: text;
 }
 
@@ -52,13 +60,15 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-	background: 0;
+	background: none;
+	display: block;
 	outline: none;
 	resize: none;
 	min-width: 100%;
+	width: 100%;
 	min-height: 100%;
 	overflow: hidden;
 	/* IE doesn't support rgba texarea, so use vendor specific alpha filter */
-	filter: alpha(opacity = 20);
+	filter: alpha(opacity = 30);
 }
 
