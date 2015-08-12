@@ -1,0 +1,20 @@
+{
+  "name": "LDT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/parpalak/LDT",
+  "authors": [
+    "Roman <roman@written.ru>"
+  ],
+  "description": "Textarea syntax highlight",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
