@@ -1,7 +1,7 @@
 /**
  * TextareaDecorator.css
  * written by Colin Kuebler 2012
- * Updated by Roman Parpalak, 2015.
+ * Updated by Roman Parpalak, 2019.
  * Part of LDT, dual licensed under GPLv3 and MIT
  * Provides styles for rendering a textarea on top of a pre with scrollbars
  */
@@ -46,6 +46,9 @@
 	padding: 0;
 	margin: 0;
 	border: 0;
+	/* Chrome may treat spaces differently for textarea and for inline elements. */
+	/* Try contenteditable when this deprecated property stops working. */
+	-webkit-user-modify: read-write-plaintext-only;
 }
 
 .ldt label {
