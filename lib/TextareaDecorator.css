@@ -48,8 +48,9 @@
 	margin: 0;
 	border: 0;
 	/* Chrome may treat spaces differently for textarea and for inline elements. */
-	/* Try contenteditable when this deprecated property stops working. */
-	-webkit-user-modify: read-write-plaintext-only;
+	/* It was a try that stopped work. I'll live it here for now. */
+	/* Maybe one has to try contenteditable instead of textarea. */
+	-webkit-user-modify: read-only;
 }
 
 .ldt label {
