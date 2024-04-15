@@ -1,5 +1,5 @@
-#Lightweight Decorator for Textareas
-##In browser live syntax highlighting
+# Lightweight Decorator for Textareas
+## In browser live syntax highlighting
 
 LDT aims to provide a simple, lightweight, and highly extensible alternative to existing in-browser live syntax highlighting solutions by leveraging clever CSS and native functionality. Other solutions often re-implement large parts of the user interaction, or use inconsistent pseudo-standard features such as contentEditable and designMode. This results in either a lack of native functionality or a large code-base to compensate or both.
 
@@ -13,30 +13,30 @@ The optional Parser is included to make it easy to generate fast highlightings u
 
 LDT was developed by Colin Kuebler originally as part of *The Koala Project*. Special thanks to the *Rensselaer Center for Open Source* for their support.
 
-<em>\* Undo & redo has been known to break when you modify the textarea's contents programmatically (which is why LDT doesn't do this by default). It might be possible to regain this functionality with upcoming HTML5 undoManager or by implementing your own undo stack.</em>
+*\* Undo & redo has been known to break when you modify the textarea's contents programmatically (which is why LDT doesn't do this by default). It might be possible to regain this functionality by implementing your own undo stack.*
 
-##Using LDT
+## Using LDT
 Making an auto highlighting `textarea` is easy with LDT. Make sure to include the modules you need either directly in your code (less server requests) or using the HTML `script` tag. Minify in production for bandwidths sake. Below is a simple example of LDT usage. See `examples` directory for more.
-###HTML
-<pre>
-&lt;!-- normal textarea fall-back, add an id to access it from javascript --&gt;
-&lt;textarea id='codeArea' class='ldt'&gt;&lt;/textarea&gt;
-&lt;noscript&gt;Please enable JavaScript to allow syntax highlighting.&lt;/noscript&gt;
-</pre>
-###JS
-<pre>
+### HTML
+```html
+<!-- normal textarea fall-back, add an id to access it from javascript -->
+<textarea id='codeArea' class='ldt'></textarea>
+<noscript>Please enable JavaScript to allow syntax highlighting.</noscript>
+```
+### JS
+```js
 // create a parser with a mapping of css classes to regular expressions
 // everything must be matched, so 'whitespace' and 'other' are commonly included
 var parser = new Parser(
   { whitespace: /\s+/,
     comment: /\/\/[^\r\n]*/,
-    other: /\S+/ } );
+    other: /\S/ } );
 // get the textarea with $ (document.getElementById)
 // pass the textarea element and parser to LDT
 var ldt = new TextareaDecorator( $('codeArea'), parser );
-</pre>
-###CSS
-<pre>
+```
+### CSS
+```css
 /* editor styles */
 .ldt {
 	width: 400px;
@@ -47,47 +47,47 @@ var ldt = new TextareaDecorator( $('codeArea'), parser );
 .ldt .comment {
     color: silver;
 }
-</pre>
+```
 
-##Browser Support
+## Browser Support
 LDT has been tested on
 
- * Firefox 3.6, 9, 10
- * Internet Explorer 8
- * Chromium 16
+ * Firefox 3.6 - 80
+ * Internet Explorer 8 - 11
+ * Chromium & Google Chrome 16 - 85
  * Midori 4.1
  * Opera 11.61
  * Epiphany
 
-##API
-###TextareaDecorator
+## API
+### TextareaDecorator
 
  + `new TextareaDecorator( textarea, parser )` Converts a HTML `textarea` element into an auto highlighting TextareaDecorator. `parser` is used to determine how to subdivide and style the content. `parser` can be any object which defines the `tokenize` and `identify` methods as described in the Parser API below.
  + `.input` The input layer of the LDT, a `textarea` element.
  + `.output` The output layer of the LDT, a `pre` element.
  + `.update()` Updates the highlighting of the LDT. It is automatically called on user input. You shouldn't need to call this unless you programmatically changed the contents of the `textarea`.
 
-###Parser
+### Parser
 
  + `new Parser( [rules], [i] )` Creates a parser. `rules` is an object whose keys are CSS classes and values are the regular expressions which match each token. `i` is a boolean which determines if the matching is case insensitive, it defaults to `false`.
  + `.add( rules )` Adds a mapping of CSS class names to regular expressions.
  + `.tokenize( string )` Splits `string` into an array of tokens as defined by `.rules`.
  + `.identify( string )` Finds the CSS class name associated with the token `string`.
 
-###Keybinder
+### Keybinder
 This is a singleton, you do not need to instantiate this object.
 
  + `.bind( element, [keymap] )` Adds Keybinder methods to `element`, optionally setting the element's `keymap`.
  + `element.keymap` A mapping of key names to callbacks.
 
-###SelectHelper
+### SelectHelper
 This is a singleton, you do not need to instantiate this object.
 
  + `.add( element )` Adds SelectHelper methods to `element`.
  + `element.insertAtCursor( string )` Inserts `string` into the `element` before the current cursor position.
 
-##Contributing
+## Contributing
 You can help by testing browser compatibility, submitting bug reports and fixes, and providing any sort of feedback. Optionally let me know if you end up using LDT, I would love to see what you do with it. Thank you for supporting open source software!
 
-##License
-LDT is open sourced under GPL v3 and MIT. Full text for both licenses should be available in this directory.
+## License
+LDT is open sourced under your choice of GPL v3 or MIT. Full text for both licenses should be available in this directory.

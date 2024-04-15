@@ -22,14 +22,14 @@
 	font-size: 14px;
 	/* resize algorithm depends on a monospaced font */
 	font-family: monospace;
-	color: black;
 }
 
 .ldt textarea {
-	/* fallback for browsers without rgba */
-	color: transparent !important;
-	/* make sure the alpha is low enough so it doesn't block the output layer */
-	color: rgba(0,0,0,.3) !important;
+	/* hide the text but show the text caret */
+	color: transparent;
+	/* Firefox caret position is slow to update when color is transparent */
+	color: rgba(0, 0, 0, 0.3);
+	caret-color: #000;
 }
 
 /* settings you shouldn't play with unless you have a good reason */
@@ -37,10 +37,11 @@
 .ldt {
 	overflow: auto;
 	position: relative;
+	text-size-adjust: none;
+	-webkit-text-size-adjust: none;
 }
 
 .ldt pre {
-	-moz-padding-start: 1px;
 	white-space: pre-wrap;
 	word-wrap: break-word;
 	padding: 0;
@@ -73,7 +74,7 @@
 	width: 100%;
 	min-height: 100%;
 	overflow: hidden;
-	/* IE doesn't support rgba texarea, so use vendor specific alpha filter */
+	/* IE doesn't support rgba textarea, so use vendor specific alpha filter */
 	filter: alpha(opacity = 30);
 }
 
